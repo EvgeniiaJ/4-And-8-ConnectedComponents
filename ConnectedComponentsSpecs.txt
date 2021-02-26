@@ -1,0 +1,56 @@
+          Project 6: 
+You are to implement both 4-connected and 8-connected component algorithms in this project.
+Your program let the user to choose which algorithm to run the program via argc[5] / args[4].
+Both algorithms consist of the following stages except which neighbors are to be checked:
+
+1) Pass-1:
+    8-connected: check upper 3 neighbors and the left neighbor; 
+    4-connected: check the neighbor right above, and left.		
+
+2) Pass-2:
+    8-connected: check itself, the lower 3 and the right neighbors; 
+    4-connected: check itself, the neighbors below and the right.
+
+3) Manage EQ table:
+
+4) Pass-3:  processing the entire Ary L to R & T to B, begins at (1,1)
+ 
+Pass-3 accomplishes the followings: 
+
+i) re-labelling: It Uses the EQAry to relabel the connected components (CC)on the result of pass-2; 
+i.e., p(i,j)  EQAry[p(i,j)]
+ 
+ii) During the re-labelling process, it also computes all properties for each connected component
+and keep tracks newMin and newMax for the image header of the re-labelled image.
+
+
+*** Run your program twice; first with argc[5] / args[4] = 4, and then with argc[5] / args[4] = 8
+
+
+I. Input 
+    a) image (argv[1] / args[0]): A binary image.
+    b) connectedness (argv[5] / args[4]): connectedness (4 or 8)
+  
+II. Outputs:
+    a) print (argv[2] / args[1]): printing file
+    b) label (argv[3] / args[2]): file for labels - result of Pass 3 (includes image heaeder)    
+      
+   For Example:
+    - number of pixels
+		- upperLftR upperLftC //the r c coordinated of the upper left corner
+		- lowerRgtR lowerRgtC //the r c coordinated of lower right corner
+   
+   c) property (argv[4] / args[3]): file for property print to store the connected component properties.
+    
+ 	The format is to be as below: 
+ 		- 1st text-line, the header of the input image, 
+    - 2nd text-line is the total number of connected components.
+    - from 3rd text, use four text-lines per each connected component:
+
+	For an example:
+		45 40 0 9  // image header
+		9   		// there are a total of 9 CCs in the image
+		1   		// CC label 1
+		187	   // 187 pixels in CC label 1
+		4  9    // upper left corner of the bounding box at row 4 column 9
+		35  39  // lower right corner of the bounding box at row 35 column 39
