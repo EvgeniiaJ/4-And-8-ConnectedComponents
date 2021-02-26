@@ -1,3 +1,4 @@
+
 public class Property {
 	
 	private int label;
